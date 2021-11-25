@@ -1,19 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import './index.css';
+import React from 'react';
+import {
+  BrowserRouter as Router, Routes, Route, Link,
+} from 'react-router-dom';
+import Home from './routes/Home';
+import Search from './routes/Search';
 
 const App = () => (
-  <div>
-    <h1>App placeholder</h1>
-    <nav
-      style={{
-        borderBottom: 'solid 1px',
-        paddingBottom: '1rem',
-      }}
-    >
+  <Router>
+    <nav>
+      <Link to="/">Home</Link>
       <Link to="/search">Search</Link>
     </nav>
-  </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/search" element={<Search />} />
+    </Routes>
+  </Router>
 );
 
 export default App;
