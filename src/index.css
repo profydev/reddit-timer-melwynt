@@ -54,3 +54,34 @@ body {
   margin-right: auto;
   margin-left: 80px;
 }
+
+/* FOOTER */
+.footer-list {
+  /* background: white; */
+  font-size: 14px;
+  padding: 32px 250px 39px 250px;
+  margin: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-item {
+  list-style: none;
+  margin-left: 25px;
+}
+
+.footer-item a {
+  text-decoration: none;
+  color: black;
+  /* transition: all 200ms ease-in; */
+}
+
+.footer-item a:hover {
+  /* color: var(--clr-primary-dark); */
+}
+
+.nav-item:first-child {
+  margin-right: auto;
+  margin-left: 80px;
+}
