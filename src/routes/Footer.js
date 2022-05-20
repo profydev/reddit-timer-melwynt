@@ -5,7 +5,7 @@ import sign from '../sign.svg';
 const Footer = () => (
   <footer>
     <div className="company">
-      <a href="https://ooloo.io/employers">profy.dev</a>
+      <a href="https://profy.dev/employers">profy.dev</a>
     </div>
     <div className="sign">
       <Link to="/">
