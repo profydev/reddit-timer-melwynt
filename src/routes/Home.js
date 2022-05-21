@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import preview from '../images/preview.png';
 
 const Home = () => (
@@ -11,10 +12,12 @@ const Home = () => (
       <a href="/">Show me the best time</a>
     </div>
     <div className="search">
-      <a href="https://www.reddit.com/r/javascript/">r/javascript</a>
+      <Link to="/search/javascript">r/javascript</Link>
     </div>
     <div className="screenshot">
-      <img src={preview} alt="" />
+      <Link to="/search/javascript">
+        <img src={preview} alt="" />
+      </Link>
     </div>
   </main>
 );
