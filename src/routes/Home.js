@@ -9,7 +9,7 @@ const Home = () => (
       Great timing, great results! Find the best time to post on your subreddit.
     </p>
     <div className="button">
-      <a href="/">Show me the best time</a>
+      <Link to="/search/javascript">Show me the best time</Link>
     </div>
     <div className="search">
       <Link to="/search/javascript">r/javascript</Link>
