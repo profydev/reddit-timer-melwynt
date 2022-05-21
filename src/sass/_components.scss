@@ -54,3 +54,55 @@ footer {
     }
   }
 }
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-family: 'Bitter', serif;
+    font-weight: 400;
+    font-size: 3.8rem;
+    line-height: 4.56rem;
+    margin-top: 2.5rem;
+  }
+
+  p {
+    margin-top: 2.1rem;
+    color: #93918f;
+  }
+
+  .button {
+    background-color: #fdb755;
+    width: 21.7rem;
+    height: 3.6rem;
+    border-radius: 0.4rem;
+    margin-top: 4.5rem;
+    text-align: center;
+
+    a {
+      text-decoration: none;
+      color: white;
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 3.6rem;
+    }
+  }
+
+  .search {
+    font-weight: 500;
+    color: #93918f;
+    margin-top: 4.6rem;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  .screenshot {
+    margin-top: 3.6rem;
+  }
+}

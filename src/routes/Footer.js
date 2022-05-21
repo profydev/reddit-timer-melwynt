@@ -9,7 +9,7 @@ const Footer = () => (
     </div>
     <div className="sign">
       <Link to="/">
-        <img src={sign} alt={sign} />
+        <img src={sign} alt="" />
       </Link>
     </div>
     <div className="terms">
