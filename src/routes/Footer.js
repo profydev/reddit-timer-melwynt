@@ -13,7 +13,8 @@ const Footer = () => (
       </Link>
     </div>
     <div className="terms">
-      <Link to="/terms">Terms & Privacy</Link>
+      {/* <Link to="/terms">Terms & Privacy</Link> */}
+      <a href="/terms">Terms & Privacy</a>
     </div>
   </footer>
 );
