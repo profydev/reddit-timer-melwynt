@@ -17,7 +17,7 @@ describeOnBranches('footer')('Footer', () => {
   });
 
   it('Contains Terms & Privacy link "/terms"', () => {
-    cy.get('footer').contains('Terms & Privacy').click();
+    cy.get('footer').contains('Terms & Privacy').click({ force: true });
     cy.url().should('equal', `${Cypress.config().baseUrl}/terms`);
   });
 });
