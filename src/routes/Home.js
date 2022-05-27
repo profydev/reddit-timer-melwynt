@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import preview from '../images/preview.png';
 
-const Home = () => (
+const Home = ({ aboutRef, howItWorksRef }) => (
   <main className="main">
     <h1 className="main__title">No reactions to your reddit posts?</h1>
     <p className="main__description">
@@ -21,7 +22,9 @@ const Home = () => (
     </div>
 
     <div className="main__section">
-      <h2 className="main__section__title">How it works</h2>
+      <h2 className="main__section__title" ref={howItWorksRef}>
+        How it works
+      </h2>
       <ul className="main__section__list">
         <li className="main__section__list__item">
           We find the 500 top posts from the past year for a subreddit.
@@ -37,7 +40,9 @@ const Home = () => (
     </div>
 
     <div className="main__section about">
-      <h2 className="main__section__title">About</h2>
+      <h2 className="main__section__title" ref={aboutRef}>
+        About
+      </h2>
       <p className="main__section__about-description">
         This app was created during a course on
         <a href="https://profy.dev"> profy.dev </a>
@@ -56,4 +61,21 @@ const Home = () => (
   </main>
 );
 
+Home.propTypes = {
+  aboutRef: PropTypes.oneOfType([
+    // Either a function
+    PropTypes.func,
+    // Or the instance of a DOM native element (see the note about SSR)
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
+  howItWorksRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
+};
+
+Home.defaultProps = {
+  aboutRef: null,
+  howItWorksRef: null,
+};
 export default Home;
