@@ -32,6 +32,7 @@ const App = () => {
           element={<Home aboutRef={aboutRef} howItWorksRef={howItWorksRef} />}
         />
         <Route path="/search" element={<Search />} />
+        <Route path="/search/:subreddit" element={<Search />} />
         <Route path="/terms" element={<Terms />} />
       </Routes>
       <Footer />
