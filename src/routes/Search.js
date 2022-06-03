@@ -1,23 +1,25 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const Search = () => {
   const { subreddit } = useParams();
-  const searchRef = useRef();
+  const [search, setSearch] = useState(subreddit);
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/search/${searchRef.current.value}`);
+    navigate(`/search/${search}`);
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
   };
 
   useEffect(() => {
-    if (subreddit === undefined) {
-      searchRef.current.value = 'javascript';
-      navigate('/search/javascript');
-    }
-  }, [subreddit, navigate]);
+    setSearch(subreddit);
+  }, [subreddit]);
 
   return (
     <main className="main-search">
@@ -27,10 +29,10 @@ const Search = () => {
           <label htmlFor="search">
             <div className="main-search__search__label">r /</div>
             <input
-              ref={searchRef}
               id="search"
               type="text"
-              defaultValue={`${subreddit}`}
+              value={search}
+              onChange={handleChange}
             />
           </label>
           <button type="submit">Search</button>
