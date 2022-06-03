@@ -4,46 +4,46 @@ import { Link } from 'react-router-dom';
 import preview from '../images/preview.png';
 
 const Home = ({ aboutRef, howItWorksRef }) => (
-  <main className="main">
-    <h1 className="main__title">No reactions to your reddit posts?</h1>
-    <p className="main__description">
+  <main className="main-home">
+    <h1 className="main-home__title">No reactions to your reddit posts?</h1>
+    <p className="main-home__description">
       Great timing, great results! Find the best time to post on your subreddit.
     </p>
-    <div className="main__button">
+    <div className="main-home__button">
       <Link to="/search/javascript">Show me the best time</Link>
     </div>
-    <div className="main__search">
+    <div className="main-home__search">
       <Link to="/search/javascript">r/javascript</Link>
     </div>
-    <div className="main__screenshot">
+    <div className="main-home__screenshot">
       <Link to="/search/javascript">
         <img src={preview} alt="" />
       </Link>
     </div>
 
-    <div className="main__section">
-      <h2 className="main__section__title" ref={howItWorksRef}>
+    <div className="main-home__section">
+      <h2 className="main-home__section__title" ref={howItWorksRef}>
         How it works
       </h2>
-      <ul className="main__section__list">
-        <li className="main__section__list__item">
+      <ul className="main-home__section__list">
+        <li className="main-home__section__list__item">
           We find the 500 top posts from the past year for a subreddit.
         </li>
-        <li className="main__section__list__item">
+        <li className="main-home__section__list__item">
           The data is visualized in a heatmap grouped by weekday and hour of the
           day.
         </li>
-        <li className="main__section__list__item">
+        <li className="main-home__section__list__item">
           See immediately when to submit your reddit post.
         </li>
       </ul>
     </div>
 
-    <div className="main__section about">
-      <h2 className="main__section__title" ref={aboutRef}>
+    <div className="main-home__section about">
+      <h2 className="main-home__section__title" ref={aboutRef}>
         About
       </h2>
-      <p className="main__section__about-description">
+      <p className="main-home__section__about-description">
         This app was created during a course on
         <a href="https://profy.dev"> profy.dev </a>
         with the goal to implement a
