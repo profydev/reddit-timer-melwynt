@@ -20,10 +20,10 @@ const getData = async (word) => {
   console.log(`fetching data... for ${word}`);
 
   // await timeout(1500);
-  const url = `https://www.reddit.com/r/${word}/top.json?t=year&limit=500`;
-  const data = await axios.get(`${url}`);
+  const url = `https://www.reddit.com/r/${word}/top.json?t=year&limit=100`;
+  const response = await axios.get(`${url}`);
 
-  return data;
+  return response.data;
 };
 
 const reducer = (state, action) => {
