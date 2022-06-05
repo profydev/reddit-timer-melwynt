@@ -1,42 +1,36 @@
-import React, { useEffect, useReducer } from 'react';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
-
+import React, {
+  useEffect, //
+  useState,
+  useReducer,
+  useRef,
+} from 'react';
+import {
+  useParams, //
+  useNavigate,
+  useLocation,
+} from 'react-router-dom';
 import axios from 'axios';
 
-const getData = async (word) => {
-  console.log('fetching data...');
+// const timeout = (delay) => {
+//   console.log(`Delay of ${delay} ms...`);
+//   return new Promise((res) => setTimeout(res, delay));
+// };
 
+const getData = async (word) => {
+  console.log(`fetching data... for ${word}`);
+
+  // await timeout(1500);
   const url = `https://www.reddit.com/r/${word}/top.json?t=2022&limit=100`;
   const data = await axios.get(`${url}`);
+
   return data;
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'getPosts':
-      console.log(`data getPosts: ${action.data}`);
+    case 'getData':
       return {
-        ...state,
         posts: action.data,
-        searchFlag: action.searchFlag,
-      };
-    case 'setSearch':
-      if (action.refresh && state.searchFlag) {
-        console.log(`data setSearch: ${action.data}`);
-        return {
-          ...state,
-          search: action.search,
-          posts: action.data,
-        };
-      }
-      return {
-        ...state,
-        search: action.search,
-      };
-    case 'searchFlag':
-      return {
-        ...state,
-        searchFlag: true,
       };
     default:
       return state;
@@ -45,59 +39,63 @@ const reducer = (state, action) => {
 
 const Search = () => {
   const { subreddit } = useParams();
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
+  const [search, setSearch] = useState(subreddit);
+
+  const fetchingRef = useRef(false);
+
+  const [loading, setLoading] = useState(false);
 
   const initialState = {
-    search: subreddit || 'javascript',
     posts: {},
-    searchFlag: true,
   };
   const [posts, dispatch] = useReducer(reducer, initialState);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/search/${posts.search}`);
-
-    const fetchData = async () => {
-      const data = await getData(posts.search);
-      return data;
-    };
-
-    fetchData().then((data) => {
-      dispatch({ type: 'getPosts', data, searchFlag: false });
-    });
+    navigate(`/search/${search}`, { state: { subreddit: search } });
   };
 
   const handleChange = (e) => {
     e.preventDefault();
-    dispatch({ type: 'setSearch', search: e.target.value, refresh: false });
+    setSearch(e.target.value);
   };
 
   useEffect(() => {
     console.log('subreddit: ', subreddit);
     console.log('location: ', location);
+    console.log('fetchingRef: ', fetchingRef.current);
 
     const fetchData = async () => {
+      setLoading(true);
       const data = await getData(subreddit);
+      setLoading(false);
       return data;
     };
 
-    if (posts.searchFlag) {
+    if (fetchingRef.current === false) {
+      fetchingRef.current = true;
       fetchData().then((data) => {
         dispatch({
-          type: 'setSearch',
-          search: subreddit,
+          type: 'getData',
           data,
-          refresh: true,
         });
       });
     }
 
+    if (location.state === null) {
+      setSearch(subreddit);
+    }
+
     return () => {
-      dispatch({ type: 'searchFlag', searchFlag: true });
+      fetchingRef.current = false;
     };
-  }, [subreddit, location, posts.searchFlag]);
+  }, [subreddit, location]);
+
+  useEffect(() => {
+    console.log('posts: ', posts);
+  }, [posts]);
 
   return (
     <main className="main-search">
@@ -109,14 +107,14 @@ const Search = () => {
             <input
               id="search"
               type="text"
-              value={posts.search}
               onChange={handleChange}
+              value={search}
             />
           </label>
           <button type="submit">Search</button>
         </form>
       </div>
-      <div>{posts.search}</div>
+      {loading && <div id="loading" />}
     </main>
   );
 };
