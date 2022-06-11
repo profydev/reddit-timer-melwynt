@@ -25,7 +25,7 @@ const recursiveCommentFetch = async (
 
   const res = await axios(url);
 
-  const { after: listingAfter, children } = res.data;
+  const { after, children } = res.data;
 
   const newData = [...data, ...children];
 
@@ -33,7 +33,7 @@ const recursiveCommentFetch = async (
     return newData;
   }
 
-  if (listingAfter) {
+  if (after) {
     console.log('Entering recursion');
     // recursive case, there's a way to fetch more comments
     return recursiveCommentFetch(word, newData, { after }, step + 1);
