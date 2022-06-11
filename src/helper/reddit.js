@@ -25,7 +25,7 @@ const recursiveCommentFetch = async (
 
   const res = await axios(url);
 
-  const { after: listingAfter, children } = res.data.data;
+  const { after: listingAfter, children } = res.data;
 
   const newData = [...data, ...children];
 
