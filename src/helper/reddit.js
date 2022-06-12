@@ -36,7 +36,7 @@ const recursiveCommentFetch = async (
   if (afterItem) {
     console.log('Entering recursion');
     // recursive case, there's a way to fetch more comments
-    return await recursiveCommentFetch(word, newData, { after: afterItem }, step + 1);
+    return recursiveCommentFetch(word, newData, { after: afterItem }, step + 1);
   }
   return newData;
 };
