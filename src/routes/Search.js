@@ -27,7 +27,7 @@ const getData = async (word) => {
 
   // return response.data;
 
-  return recursiveCommentFetch(word);
+  return await recursiveCommentFetch(word);
 };
 
 const reducer = (state, action) => {
