@@ -16,7 +16,7 @@ const makeRedditCommentUrl = (word, queryParams) => {
 const recursiveCommentFetch = async (
   word,
   data = [],
-  { after = null, t = 'year', limit = 100 } = {},
+  { after, t = 'year', limit = 100 } = {},
   step = 1,
 ) => {
   console.log('step:', step);
@@ -25,7 +25,7 @@ const recursiveCommentFetch = async (
 
   const res = await axios(url);
 
-  const { after, children } = res.data;
+  const { after: afterItem, children } = res.data.data;
 
   const newData = [...data, ...children];
 
@@ -33,10 +33,10 @@ const recursiveCommentFetch = async (
     return newData;
   }
 
-  if (after) {
+  if (afterItem) {
     console.log('Entering recursion');
     // recursive case, there's a way to fetch more comments
-    return recursiveCommentFetch(word, newData, { after }, step + 1);
+    return recursiveCommentFetch(word, newData, { afterItem }, step + 1);
   }
   return newData;
 };
