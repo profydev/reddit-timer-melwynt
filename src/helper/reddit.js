@@ -21,7 +21,8 @@ const recursiveCommentFetch = async (
 ) => {
   console.log('step:', step);
 
-  const url = makeRedditCommentUrl(word, { after, t, limit });
+  // after param needs to be last in the url
+  const url = makeRedditCommentUrl(word, { t, limit, after });
 
   const res = await axios(url);
 
