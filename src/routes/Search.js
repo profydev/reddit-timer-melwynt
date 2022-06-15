@@ -9,26 +9,10 @@ import {
   useNavigate,
   useLocation,
 } from 'react-router-dom';
-// import axios from 'axios';
+
 import recursiveCommentFetch from '../helper/reddit';
 
-// const timeout = (delay) => {
-//   console.log(`Delay of ${delay} ms...`);
-//   return new Promise((res) => setTimeout(res, delay));
-// };
-
-const getData = async (word) => {
-  console.log(`fetching data... for ${word}`);
-
-  // await timeout(1000);
-
-  // const url = `https://www.reddit.com/r/${word}/top.json?t=year&limit=100`;
-  // const response = await axios.get(`${url}`);
-
-  // return response.data;
-
-  return recursiveCommentFetch(word);
-};
+const getData = async (word) => recursiveCommentFetch(word);
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -67,10 +51,6 @@ const Search = () => {
   };
 
   useEffect(() => {
-    console.log('subreddit: ', subreddit);
-    console.log('location: ', location);
-    console.log('fetchingRef: ', fetchingRef.current);
-
     const fetchData = async () => {
       setLoading(true);
       const data = await getData(subreddit);
@@ -98,7 +78,7 @@ const Search = () => {
   }, [subreddit, location]);
 
   useEffect(() => {
-    console.log('posts: ', posts);
+    // console.log('posts: ', posts);
   }, [posts]);
 
   return (

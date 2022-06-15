@@ -9,7 +9,6 @@ const makeRedditCommentUrl = (word, queryParams) => {
     .map(([k, v]) => `${k}=${v}`)
     .join('&')}`;
 
-  console.log(url);
   return url;
 };
 
@@ -19,8 +18,6 @@ const recursiveCommentFetch = async (
   { after, t = 'year', limit = 100 } = {},
   step = 1,
 ) => {
-  console.log('step:', step);
-
   // after param needs to be last in the url
   const url = makeRedditCommentUrl(word, { t, limit, after });
 
@@ -35,13 +32,9 @@ const recursiveCommentFetch = async (
   }
 
   if (afterItem) {
-    console.log('Entering recursion');
-    // recursive case, there's a way to fetch more comments
     return recursiveCommentFetch(word, newData, { after: afterItem }, step + 1);
   }
   return newData;
 };
-
-// recursiveCommentFetch(user).then((comments) => console.log(comments));
 
 export default recursiveCommentFetch;
