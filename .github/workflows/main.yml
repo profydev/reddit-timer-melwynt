@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4.1.0
+      - uses: actions/checkout@v2
 
       - name: Validate Branch Name
         run: sh ./scripts/validate-branch-name ${{ github.head_ref }}
