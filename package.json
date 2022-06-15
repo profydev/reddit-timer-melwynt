@@ -23,7 +23,7 @@
     "lint": "eslint .",
     "format": "eslint --fix .",
     "cypress": "cross-env TZ=Europe/Berlin cypress run",
-    "cypress:open": "cross-env TZ=Europe/Berlin npx cypress open",
+    "cypress:open": "cross-env TZ=Europe/Berlin npx cypress open --config-file=cypress.config.js",
     "cypress:start-and-test": "start-server-and-test start http://localhost:3000 cypress:open",
     "prepare": "husky install"
   },
