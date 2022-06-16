@@ -206,3 +206,27 @@ footer {
     }
   }
 }
+
+#loading {
+  display: inline-block;
+  margin-top: 5.6rem;
+  width: 7.1rem;
+  height: 7.1rem;
+  // border: 0.6rem solid rgba(255, 255, 255, 0.3);
+  border: 0.6rem solid #feb756;
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
