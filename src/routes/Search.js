@@ -9,7 +9,7 @@ import {
   useNavigate,
   useLocation,
 } from 'react-router-dom';
-
+import Calendar from './Calendar';
 import recursiveCommentFetch from '../helper/reddit';
 
 const getData = async (word) => recursiveCommentFetch(word);
@@ -77,10 +77,6 @@ const Search = () => {
     };
   }, [subreddit, location]);
 
-  useEffect(() => {
-    // console.log('posts: ', posts);
-  }, [posts]);
-
   return (
     <main className="main-search">
       <h2 className="main-search__title">Find the best time for a subreddit</h2>
@@ -98,7 +94,7 @@ const Search = () => {
           <button type="submit">Search</button>
         </form>
       </div>
-      {loading && <div id="loading" />}
+      {loading ? <div id="loading" /> : <Calendar posts={posts} />}
     </main>
   );
 };
