@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import dayjs from 'dayjs';
+
+const utc = require('dayjs/plugin/utc');
+
+dayjs.extend(utc);
 
 const Calendar = ({ posts, handleSelect }) => {
   const data = posts.posts;
@@ -23,9 +27,10 @@ const Calendar = ({ posts, handleSelect }) => {
   const updateCalendar = (dataPosts) => {
     // loop through all the posts
     for (let i = 0; i < dataPosts.length; i += 1) {
-      const someTimestamp = dataPosts[i].data.created;
-      const hour = Number(moment.unix(someTimestamp).format('H'));
-      const dayOfWeek = moment.unix(someTimestamp).format('dddd');
+      const currentTime = dayjs.unix(dataPosts[i].data.created);
+
+      const hour = Number(currentTime.utc().local().format('H'));
+      const dayOfWeek = currentTime.utc().local().format('dddd');
 
       // push the hour in the correct day of the week
       switch (dayOfWeek) {
