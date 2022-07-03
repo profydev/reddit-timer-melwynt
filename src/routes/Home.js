@@ -5,15 +5,21 @@ import preview from '../images/preview.png';
 
 const Home = ({ aboutRef, howItWorksRef }) => (
   <main className="main-home">
-    <h1 className="main-home__title">No reactions to your reddit posts?</h1>
+    <h1 className="main-home__title">
+      No reactions to your reddit posts?
+    </h1>
     <p className="main-home__description">
       Great timing, great results! Find the best time to post on your subreddit.
     </p>
     <div className="main-home__button">
-      <Link to="/search/javascript">Show me the best time</Link>
+      <Link to="/search/javascript">
+        Show me the best time
+      </Link>
     </div>
     <div className="main-home__search">
-      <Link to="/search/javascript">r/javascript</Link>
+      <Link to="/search/javascript">
+        r/javascript
+      </Link>
     </div>
     <div className="main-home__screenshot">
       <Link to="/search/javascript">
@@ -45,7 +51,11 @@ const Home = ({ aboutRef, howItWorksRef }) => (
       </h2>
       <p className="main-home__section__about-description">
         This app was created during a course on
-        <a href="https://profy.dev"> profy.dev </a>
+        <a href="https://profy.dev">
+          {' '}
+          profy.dev
+          {' '}
+        </a>
         with the goal to implement a
         <br />
         pixel-perfect real-world application with professional workflows and

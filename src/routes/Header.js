@@ -12,7 +12,9 @@ const Header = ({ handleScroll, aboutRef, howItWorksRef }) => (
     </div>
     <ul className="nav-list">
       <li className="nav-list__item">
-        <Link to="/search/javascript">Search</Link>
+        <Link to="/search/javascript">
+          Search
+        </Link>
       </li>
       <li className="nav-list__item">
         <Link

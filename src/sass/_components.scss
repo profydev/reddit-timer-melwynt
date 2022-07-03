@@ -205,6 +205,18 @@ footer {
       cursor: pointer;
     }
   }
+
+  &__timezone {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    color: #93918f;
+    font-weight: 400;
+    margin-top: 1.2rem;
+
+    span {
+      font-weight: 700;
+    }
+  }
 }
 
 #loading {
@@ -228,5 +240,100 @@ footer {
 @-webkit-keyframes spin {
   to {
     -webkit-transform: rotate(360deg);
+  }
+}
+
+.calendar {
+  border-collapse: collapse;
+  margin-top: 6rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+
+  thead {
+    tr {
+      text-align: center;
+      color: #787878;
+      height: 5.2rem;
+
+      background: linear-gradient(
+        0deg,
+        rgba(233, 233, 233, 1) 0%,
+        rgba(254, 254, 254, 1) 100%
+      );
+
+      td:first-child {
+        background: white;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      th {
+        text-align: center;
+        width: 15.4rem;
+        color: white;
+        background-color: #1e2537;
+      }
+
+      td {
+        width: 4rem;
+        height: 4rem;
+        text-align: center;
+
+        font-weight: 700;
+        color: white;
+
+        &.selected {
+          border: 0.1rem solid black;
+        }
+
+        &.color-0 {
+          background-color: #e0e592;
+        }
+        &.color-1 {
+          background-color: #aed396;
+        }
+        &.color-2 {
+          background-color: #a9d194;
+        }
+        &.color-3 {
+          background-color: #a0ce93;
+        }
+        &.color-4 {
+          background-color: #99cd94;
+        }
+        &.color-5 {
+          background-color: #8cc894;
+        }
+        &.color-6 {
+          background-color: #5eb391;
+        }
+        &.color-7 {
+          background-color: #5db492;
+        }
+        &.color-8 {
+          background-color: #5cb391;
+        }
+        &.color-9 {
+          background-color: #5aad8c;
+        }
+        &.color-10 {
+          background-color: #3984a3;
+        }
+      }
+    }
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+
+    cursor: pointer;
   }
 }

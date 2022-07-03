@@ -9,7 +9,7 @@ import {
   useNavigate,
   useLocation,
 } from 'react-router-dom';
-
+import Calendar from './Calendar';
 import recursiveCommentFetch from '../helper/reddit';
 
 const getData = async (word) => recursiveCommentFetch(word);
@@ -26,6 +26,8 @@ const reducer = (state, action) => {
 };
 
 const Search = () => {
+  const [timezone, setTimezone] = useState('');
+
   const { subreddit } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
@@ -48,6 +50,11 @@ const Search = () => {
   const handleChange = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
+  };
+
+  // const handleSelect = (day, hour) => {
+  const handleSelect = () => {
+    // console.log(`select ${day} ${hour}`);
   };
 
   useEffect(() => {
@@ -77,9 +84,10 @@ const Search = () => {
     };
   }, [subreddit, location]);
 
-  useEffect(() => {
-    // console.log('posts: ', posts);
-  }, [posts]);
+  useEffect(
+    () => setTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone),
+    [],
+  );
 
   return (
     <main className="main-search">
@@ -98,7 +106,14 @@ const Search = () => {
           <button type="submit">Search</button>
         </form>
       </div>
-      {loading && <div id="loading" />}
+      {loading ? (
+        <div id="loading" />
+      ) : (
+        <Calendar posts={posts} handleSelect={handleSelect} />
+      )}
+      <div className="main-search__timezone">
+        All times are shown in your timezone: <span>{timezone}</span>
+      </div>
     </main>
   );
 };
