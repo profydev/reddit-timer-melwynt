@@ -50,6 +50,11 @@ const Search = () => {
     setSearch(e.target.value);
   };
 
+  // const handleSelect = (day, hour) => {
+  const handleSelect = () => {
+    // console.log(`select ${day} ${hour}`);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -94,7 +99,11 @@ const Search = () => {
           <button type="submit">Search</button>
         </form>
       </div>
-      {loading ? <div id="loading" /> : <Calendar posts={posts} />}
+      {loading ? (
+        <div id="loading" />
+      ) : (
+        <Calendar posts={posts} handleSelect={handleSelect} />
+      )}
       <div className="main-search__timezone">
         All times are shown in your timezone: <span>Europe/Berlin</span>
       </div>

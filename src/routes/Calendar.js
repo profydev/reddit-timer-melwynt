@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-const Calendar = ({ posts }) => {
+const Calendar = ({ posts, handleSelect }) => {
   const data = posts.posts;
 
   const initCalendar = {
@@ -14,6 +14,9 @@ const Calendar = ({ posts }) => {
     Saturday: {},
     Sunday: {},
   };
+
+  const [selected, setSelected] = useState({});
+  const [focused, setFocused] = useState({});
 
   const [calendar, setCalendar] = useState(initCalendar);
 
@@ -104,7 +107,7 @@ const Calendar = ({ posts }) => {
   }, [data]);
 
   useEffect(() => {
-    console.log(calendar);
+    // console.log(calendar);
   }, [calendar]);
 
   return (
@@ -134,12 +137,60 @@ const Calendar = ({ posts }) => {
             {hours.map((hour) => {
               const res = calendar[day][hour] || 0;
 
+              // setting up color code based on number of posts during that hour
+              let classTD = res >= 10 ? 'color-10' : `color-${res}`;
+
+              // init itemSelected to false
+              let itemSelected = false;
+
+              // if day and hour are true, we add 'selected' class
+              if (day === selected.day && hour === selected.hour) {
+                itemSelected = true;
+                classTD += ' selected';
+              }
+
+              // state if item was hovered
+              let itemFocused = false;
+
+              // focused state is updated via setFocused on onMouseOver
+              if (day === focused.day && hour === focused.hour) {
+                itemFocused = true;
+
+                // we are only adding the 'selected' class if the item was not already clicked on
+                if (!itemSelected && itemFocused) {
+                  classTD += ' selected';
+                }
+              }
+
               return (
                 <td
-                  className={res >= 10 ? 'color-10' : `color-${res}`}
+                  className={classTD}
                   key={`${day}-${hour}`}
+                  onMouseOver={() => {
+                    // console.log('hover');
+                    setFocused({
+                      day,
+                      hour,
+                    });
+                  }}
+                  onFocus={() => {
+                    // console.log('focused');
+                  }}
                 >
-                  {res}
+                  <button
+                    className="calendar__button"
+                    type="button"
+                    onClick={() => {
+                      // handleSelect(day, hour);
+                      handleSelect();
+                      setSelected({
+                        day,
+                        hour,
+                      });
+                    }}
+                  >
+                    {res}
+                  </button>
                 </td>
               );
             })}
@@ -155,10 +206,12 @@ Calendar.propTypes = {
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]),
+  handleSelect: PropTypes.func,
 };
 
 Calendar.defaultProps = {
   posts: {},
+  handleSelect: () => {},
 };
 
 export default Calendar;

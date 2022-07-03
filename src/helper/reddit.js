@@ -27,7 +27,7 @@ const recursiveCommentFetch = async (
 
   const newData = [...data, ...children];
 
-  if (step === 5) {
+  if (step === 1) {
     return newData;
   }
 

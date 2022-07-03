@@ -281,10 +281,13 @@ footer {
         width: 4rem;
         height: 4rem;
         text-align: center;
-        // border: 0.1rem solid grey;
 
         font-weight: 700;
         color: white;
+
+        &.selected {
+          border: 0.1rem solid black;
+        }
 
         &.color-0 {
           background-color: #e0e592;
@@ -321,5 +324,16 @@ footer {
         }
       }
     }
+  }
+
+  &__button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+
+    cursor: pointer;
   }
 }
