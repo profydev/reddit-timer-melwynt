@@ -95,6 +95,9 @@ const Search = () => {
         </form>
       </div>
       {loading ? <div id="loading" /> : <Calendar posts={posts} />}
+      <div className="main-search__timezone">
+        All times are shown in your timezone: <span>Europe/Berlin</span>
+      </div>
     </main>
   );
 };

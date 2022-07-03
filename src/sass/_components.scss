@@ -205,6 +205,18 @@ footer {
       cursor: pointer;
     }
   }
+
+  &__timezone {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    color: #93918f;
+    font-weight: 400;
+    margin-top: 1.2rem;
+
+    span {
+      font-weight: 700;
+    }
+  }
 }
 
 #loading {
