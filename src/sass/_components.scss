@@ -378,21 +378,30 @@ footer {
         td {
           border: 1px solid #dddddd;
           padding-left: 1.2rem;
+
+          a {
+            text-decoration: none;
+            color: #0087ff;
+          }
         }
 
-        td:first-child {
+        td:nth-child(1) {
           width: 37.3rem;
         }
 
-        td:nth-child(2) {
-          width: 11.4rem;
-        }
+        // td:nth-child(2) {
+        //   width: 11.4rem;
+        // }
 
-        td:nth-child(3) {
-          width: 6.3rem;
-        }
+        // td:nth-child(3) {
+        //   width: 6.3rem;
+        // }
 
-        td:nth-child(4) {
+        // td:nth-child(4) {
+        //   width: 12.9rem;
+        // }
+
+        td:nth-child(5) {
           width: 12.9rem;
         }
       }
