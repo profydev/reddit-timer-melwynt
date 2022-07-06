@@ -3,6 +3,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Posts = ({ selectedPosts }) => {
+  selectedPosts.sort((a, b) => {
+    if (a.timePosted > b.timePosted) {
+      return 1;
+    }
+    if (a.timePosted < b.timePosted) {
+      return -1;
+    }
+    return 0;
+  });
+
   const shortenTitle = (title) => {
     const titleLength = title.length;
     let newTitle = title;
@@ -34,12 +44,26 @@ const Posts = ({ selectedPosts }) => {
             selectedPosts.map((post) => (
               <tr key={post.id}>
                 <td>
-                  <a href={post.url}>{shortenTitle(post.title)}</a>
+                  <a href={post.url} target="_blank" rel="noopener noreferrer">
+                    {shortenTitle(post.title)}
+                  </a>
                 </td>
                 <td>{post.timePosted}</td>
                 <td>{post.score}</td>
                 <td>{post.num_comments}</td>
-                <td>{post.author}</td>
+                <td>
+                  {post.author === '[deleted]' ? (
+                    '[deleted]'
+                  ) : (
+                    <a
+                      href={`https://www.reddit.com/user/${post.author}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {post.author}
+                    </a>
+                  )}
+                </td>
               </tr>
             ))
           ) : (

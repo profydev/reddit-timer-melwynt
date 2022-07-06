@@ -117,7 +117,7 @@ const Search = () => {
       <div className="main-search__timezone">
         All times are shown in your timezone: <span>{timezone}</span>
       </div>
-      <Posts selectedPosts={selectedPosts} />
+      {selectedPosts.length !== 0 && <Posts selectedPosts={selectedPosts} />}
     </main>
   );
 };

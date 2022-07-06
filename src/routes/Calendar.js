@@ -31,12 +31,14 @@ const Calendar = ({ posts, handleSelect }) => {
       const {
         created, //
         title,
-        url,
+        permalink,
         score,
         author,
         num_comments,
         id,
       } = dataPosts[i].data;
+
+      const url = `https://www.reddit.com${permalink}`;
 
       const currentTime = dayjs.unix(created);
 
