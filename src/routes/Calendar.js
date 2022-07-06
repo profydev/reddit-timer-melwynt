@@ -362,10 +362,10 @@ const Calendar = ({ posts, handleSelect }) => {
                     type="button"
                     onClick={() => {
                       if (res === 0) {
-                        console.log(
-                          'type of calendar[day][hour]:',
-                          typeof calendar[day][hour],
-                        );
+                        // console.log(
+                        //   'type of calendar[day][hour]:',
+                        //   typeof calendar[day][hour],
+                        // );
                         handleSelect([]);
                       } else {
                         handleSelect(calendar[day][hour].posts);

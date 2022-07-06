@@ -21,7 +21,7 @@ const Posts = ({ selectedPosts }) => {
       newTitle = title.substring(0, 45);
       newTitle += '…';
     }
-    console.log('Title length:', newTitle.length);
+    // console.log('Title length:', newTitle.length);
     return newTitle;
   };
   // The new Babel release gives support for ECMAs…
