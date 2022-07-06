@@ -56,7 +56,7 @@ const Posts = ({ selectedPosts }) => {
                     '[deleted]'
                   ) : (
                     <a
-                      href={`https://www.reddit.com/user/${post.author}`}
+                      href={`https://reddit.com/u/${post.author}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
