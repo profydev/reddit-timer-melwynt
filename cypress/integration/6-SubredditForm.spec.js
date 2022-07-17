@@ -4,14 +4,14 @@ describeOnBranches('subreddit-form')('Subreddit Form', () => {
   it('Updates URL with input value on submit', () => {
     cy.visit('/search/javascript');
 
-    cy.get('input[id="search"]').clear().type('reactjs');
+    cy.get('input#search').clear().type('reactjs');
 
     // cy.contains('button', 'SEARCH', { matchCase: false }).click({
     //   force: true,
     // });
     cy.contains('[class=nav-list__item]', 'SEARCH', {
       matchCase: false,
-    }).click();
+    }).click({ force: true });
 
     cy.url().should('equal', `${Cypress.config().baseUrl}/search/reactjs`);
   });
@@ -24,7 +24,7 @@ describeOnBranches('subreddit-form')('Subreddit Form', () => {
     // cy.get('header').contains('Search').click();
     cy.contains('[class=nav-list__item]', 'SEARCH', {
       matchCase: false,
-    }).click();
+    }).click({ force: true });
 
     cy.get('input').should('have.value', 'javascript');
   });
