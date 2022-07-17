@@ -6,9 +6,9 @@ describeOnBranches('subreddit-form')('Subreddit Form', () => {
 
     cy.get('input').clear().type('reactjs');
 
-    cy.contains('button', 'SEARCH', { matchCase: false })
-      .scrollIntoView()
-      .click();
+    cy.contains('button', 'SEARCH', { matchCase: false }).click({
+      force: true,
+    });
 
     cy.url().should('equal', `${Cypress.config().baseUrl}/search/reactjs`);
   });
@@ -18,7 +18,7 @@ describeOnBranches('subreddit-form')('Subreddit Form', () => {
 
     cy.get('input').should('have.value', 'reactjs');
 
-    cy.get('header').contains('Search').scrollIntoView().click();
+    cy.get('header').contains('Search').click();
 
     cy.get('input').should('have.value', 'javascript');
   });
