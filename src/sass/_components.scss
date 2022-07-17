@@ -503,15 +503,13 @@ footer {
 
 // icon
 .menu-icon {
-  display: none;
-
   padding: 1.6rem 2rem;
   position: relative;
   float: right;
   cursor: pointer;
 
-  @media only screen and (max-width: 700px) {
-    display: unset;
+  @media only screen and (min-width: 700px) {
+    display: none;
   }
 
   .nav-icon {
